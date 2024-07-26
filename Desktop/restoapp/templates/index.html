@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Restaurant Menu Profitability Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="Price" placeholder="Price" required="required" />
+      <select id="Ingredients" name="Ingredients" placeholder="Ingredients">
+        <option value="" disabled selected>Select ingredients</option>
+        <option value="['confidential']">Confidential</option>
+        <option value="['Tomatoes', 'Basil', 'Garlic', 'Olive Oil']">Tomatoes, Basil, Garlic, Olive Oil</option>
+        <option value="['Chocolate', 'Butter', 'Sugar', 'Eggs']">Chocolate, Butter, Sugar, Eggs</option>
+        <option value="['Chicken', 'Fettuccine', 'Alfredo Sauce', 'Parmesan']">Chicken, Fettuccine, Alfredo Sauce, Parmesan</option>
+      </select>
+      <select id="MenuCategory" name="MenuCategory" placeholder="Menu Category">
+        <option value="" disabled selected>Select menu category</option>
+        <option value="Beverages">Beverages</option>
+        <option value="Appetizers">Appetizers</option>
+        <option value="Desserts">Desserts</option>
+        <option value="Main Course">Main Course</option>
+      </select>
+      <select id="MenuItem" name="MenuItem" placeholder="Menu Item">
+        <option value="" disabled selected>Select menu item</option>
+        <option value='Soda'>Soda</option>
+        <option value='Spinach Artichoke Dip'>Spinach Artichoke Dip</option>
+        <option value='New York Cheesecake'>New York Cheesecake</option>
+        <option value='Chicken Alfredo'>Chicken Alfredo</option>
+        <option value='Grilled Steak'>Grilled Steak</option>
+        <option value='Stuffed Mushrooms'>Stuffed Mushrooms</option>
+        <option value='Tiramisu'>Tiramisu</option>
+        <option value='Lemonade'>Lemonade</option>
+        <option value='Chocolate Lava Cake'>Chocolate Lava Cake</option>
+        <option value='Iced Tea'>Iced Tea</option>
+        <option value='Coffee'>Coffee</option>
+        <option value='Bruschetta'>Bruschetta</option>
+        <option value='Vegetable Stir-Fry'>Vegetable Stir-Fry</option>
+        <option value='Shrimp Scampi'>Shrimp Scampi</option>
+        <option value='Fruit Tart'>Fruit Tart</option>
+        <option value='Caprese Salad'>Caprese Salad</option>
+      </select>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
